@@ -6,15 +6,22 @@ export default class App extends Component {
   constructor() {
     super()
     this.state ={
-      data: []
+      data: {}
     }
   }
 
-  componentDidMount () {
-    fetch('http://swapi.co/api/people/1')
-      .then( response => this.setState({data: response}))
-      .catch( error => console.log('There was an error in your request'))
-  }
+getTitleScroll () {
+fetch('http://swapi.co/api/films/1')
+  .then( response => response.json())
+  .then( data => {
+    this.setState({data: data})
+  })
+  .catch( error => alert('There was an error in your request.'))
+}
+
+componentWillMount () {
+  this.getTitleScroll();
+}
 
   render() {
     return (
