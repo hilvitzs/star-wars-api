@@ -1,0 +1,25 @@
+html,
+body {
+  height: auto;
+  width: auto;
+}
+
+.app {
+  display: flex;
+  border: 1px red solid;
+}
+
+.side-scroll {
+  width: 30%;
+  border: 1px blue solid;
+}
+
+.main-container {
+  width: 70%;
+  border: 1px magenta solid;
+  margin: 15px;
+}
+
+h1 {
+  text-align: center;
+}
