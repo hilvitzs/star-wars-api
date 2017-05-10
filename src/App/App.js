@@ -12,6 +12,7 @@ export default class App extends Component {
       people: [],
       vehicles: [],
       planets: [],
+      favorites: [],
       display: 'home'
     }
   }
@@ -33,10 +34,12 @@ fetchData(arg) {
     )
 }
 
-// promise.all()
-
 componentDidMount () {
   this.getTitleScroll();
+}
+
+addFavorite(obj) {
+  this.state.favorites.push(obj)
 }
 
   render() {
@@ -51,7 +54,8 @@ componentDidMount () {
           <section>
             <CardHolder people={this.state.people}
               vehicles={this.state.vehicles}
-              planets={this.state.planets} />
+              planets={this.state.planets}
+              handleClick={(arg) => this.fetchData(arg)}/>
           </section>
         </section>
       </div>
