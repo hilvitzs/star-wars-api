@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Scroll } from './Components/Scroll/Scroll';
-import { Button } from './Components/Buttons/Buttons';
+import { Buttons } from './Components/Buttons/Buttons';
 import { CardHolder } from './Components/CardHolder/CardHolder';
 
 export default class App extends Component {
@@ -17,7 +17,8 @@ export default class App extends Component {
   }
 
 getTitleScroll() {
-  fetch('http://swapi.co/api/films/1')
+  const getRandom = Math.floor(Math.random() * (8 - 1)) + 1;
+  fetch(`http://swapi.co/api/films/${getRandom}`)
     .then( response => response.json())
     .then( scroll => {
       this.setState({scroll: scroll})
@@ -25,7 +26,7 @@ getTitleScroll() {
 }
 
 fetchData(arg) {
-  fetch(`http://swapi.co/api/${arg}`)
+  fetch(`http://swapi.co/api/${arg}/`)
     .then( response => response.json())
     .then( values =>
       this.setState({ [arg]: values.results})
@@ -36,25 +37,22 @@ fetchData(arg) {
 
 componentDidMount () {
   this.getTitleScroll();
-  this.fetchData('people')
-  this.fetchData('vehicles')
-  this.fetchData('planets')
 }
 
   render() {
     return (
       <div className="App">
         <h1>SWAPI-box</h1>
+        <Buttons className='button1' handleClick={(arg) => this.fetchData(arg)} />
         <aside>
           <Scroll scroll={this.state.scroll}/>
         </aside>
         <section>
-          <CardHolder people={this.state.people} />
+          <CardHolder people={this.state.people}
+                      vehicles={this.state.vehicles}
+                      planets={this.state.planets} />
         </section>
         <section className='buttons-container'>
-          {/* <Buttons className='button1' handleClick={this.getPeople().bind(this)} />
-          <Buttons className='button2' handleClick={this.getPlanets().bind(this)} />
-          <Buttons className='button3' handleClick={this.getVehicles().bind(this)} /> */}
         </section>
       </div>
     );
