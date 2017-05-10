@@ -2,14 +2,13 @@ import React from 'react';
 import './Cards.css'
 
 export const Cards = ({ person, vehicle, planet, index }) => {
-
   if(person) {
     return(
     <div key={index} className='card'>
       <p>Name: {person.name}</p>
       <p>Homeworld: {person.homeworld}</p>
       <p>Species: {person.species}</p>
-      <p>Population: {person.population}</p>
+      <p>Population of Homeworld: {person.population}</p>
     </div>
     )
   } else if(vehicle) {
