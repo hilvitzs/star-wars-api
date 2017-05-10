@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Scroll } from './Components/Scroll/Scroll';
 import { Buttons } from './Components/Buttons/Buttons';
-import { CardHolder } from './Components/CardHolder/CardHolder';
+// import { CardHolder } from './Components/CardHolder/CardHolder';
 
 export default class App extends Component {
   constructor() {
@@ -13,7 +13,7 @@ export default class App extends Component {
       vehicles: [],
       planets: [],
       favorites: [],
-      display: 'home'
+      cardData: []
     }
   }
 
@@ -26,16 +26,27 @@ getTitleScroll() {
     })
 }
 
-fetchData(arg) {
-  fetch(`http://swapi.co/api/${arg}/`)
-    .then( response => response.json())
-    .then( values =>
-      this.setState({ [arg]: values.results})
-    )
+handleClick(e) {
+  console.log('fired that shit')
+  const buttonName = e.currentTarget.textContent
+  this.setState({
+    cardData: this.state[buttonName]
+  })
 }
 
-componentDidMount () {
+componentDidMount() {
   this.getTitleScroll();
+}
+
+componentWillMount() {
+  let array = ['people', 'planets', 'vehicles']
+  array.forEach(call => {
+    fetch(`http://swapi.co/api/${call}/`)
+      .then(response => response.json())
+      .then(values =>
+        this.setState({ [call]: values.results})
+      )
+  })
 }
 
 addFavorite(obj) {
@@ -50,13 +61,8 @@ addFavorite(obj) {
         </aside>
         <section className='main-container'>
           <h1>SWAPI-box</h1>
-          <Buttons handleClick={(arg) => this.fetchData(arg)} />
-          <section>
-            <CardHolder people={this.state.people}
-              vehicles={this.state.vehicles}
-              planets={this.state.planets}
-              handleClick={(arg) => this.fetchData(arg)}/>
-          </section>
+          <Buttons handleClick={this.handleClick.bind(this)} />
+
         </section>
       </div>
     );

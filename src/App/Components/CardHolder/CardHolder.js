@@ -1,8 +1,15 @@
 import React from 'react';
-import { Cards } from '../Cards/Cards';
+// import { Cards } from '../Cards/Cards';
+import People from '../People/People';
+import Planets from '../Planets/Planets';
+import Vehicles from '../Vehicles/Vehicles';
 import './CardHolder.css'
 
-export const CardHolder = ({ people, vehicles, planets, handleClick }) => {
+export const CardHolder = ({ cardData, handleClick }) => {
+  if (cardData) {
+
+  }
+
   return (
     <div>
       <section className="card-container">
