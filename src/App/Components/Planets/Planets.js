@@ -9,12 +9,12 @@ export default class Planets extends Component {
       terrain: '',
       population: '',
       climate: '',
-      // residents: ''
+      residents: ''
     }
   }
 
-  componentDidMount() {
-
+  componentWillMount() {
+    
   }
 
   fetchData(arg) {

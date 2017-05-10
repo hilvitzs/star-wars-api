@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Scroll } from './Components/Scroll/Scroll';
 import { Buttons } from './Components/Buttons/Buttons';
-// import { CardHolder } from './Components/CardHolder/CardHolder';
+import { CardHolder } from './Components/CardHolder/CardHolder';
 
 export default class App extends Component {
   constructor() {
@@ -62,7 +62,7 @@ addFavorite(obj) {
         <section className='main-container'>
           <h1>SWAPI-box</h1>
           <Buttons handleClick={this.handleClick.bind(this)} />
-
+          <CardHolder />
         </section>
       </div>
     );
