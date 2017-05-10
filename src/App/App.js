@@ -41,18 +41,18 @@ componentDidMount () {
 
   render() {
     return (
-      <div className="App">
-        <h1>SWAPI-box</h1>
-        <Buttons className='button1' handleClick={(arg) => this.fetchData(arg)} />
-        <aside>
+      <div className='app'>
+        <aside className='side-scroll'>
           <Scroll scroll={this.state.scroll}/>
         </aside>
-        <section>
-          <CardHolder people={this.state.people}
-                      vehicles={this.state.vehicles}
-                      planets={this.state.planets} />
-        </section>
-        <section className='buttons-container'>
+        <section className='main-container'>
+          <h1>SWAPI-box</h1>
+          <Buttons handleClick={(arg) => this.fetchData(arg)} />
+          <section>
+            <CardHolder people={this.state.people}
+              vehicles={this.state.vehicles}
+              planets={this.state.planets} />
+          </section>
         </section>
       </div>
     );

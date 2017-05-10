@@ -1,10 +1,15 @@
 import React from 'react';
+import './Cards.css'
 
 export const Cards = ({ person, vehicle, planet, index }) => {
+
   if(person) {
     return(
     <div key={index} className='card'>
       <p>Name: {person.name}</p>
+      <p>Homeworld: {person.homeworld}</p>
+      <p>Species: {person.species}</p>
+      <p>Population: {person.population}</p>
     </div>
     )
   } else if(vehicle) {
@@ -23,7 +28,7 @@ export const Cards = ({ person, vehicle, planet, index }) => {
       <p>Terrain: {planet.terrain}</p>
       <p>Population: {planet.population}</p>
       <p>Climate: {planet.climate}</p>
-      {/* <p>{planet.residents}</p> */}
+      <p>Residents: {'Hello'}</p>
     </div>
     )
   }

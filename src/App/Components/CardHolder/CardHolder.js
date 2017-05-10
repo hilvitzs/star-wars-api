@@ -1,10 +1,11 @@
 import React from 'react';
 import { Cards } from '../Cards/Cards';
+import './CardHolder.css'
 
 export const CardHolder = ({ people, vehicles, planets }) => {
   return (
     <div>
-      <section>
+      <section card-container>
         { people.map( (person, index) => {
           return(
             <div key={index}>
