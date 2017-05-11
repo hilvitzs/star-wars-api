@@ -5,7 +5,6 @@ import Vehicles from '../Vehicles/Vehicles';
 import './CardHolder.css'
 
 export const CardHolder = ({ cardData, handleClick }) => {
-  console.log(cardData);
   if (cardData) {
     const cards = cardData.map((card, index) => {
       if (card.birth_year) {
