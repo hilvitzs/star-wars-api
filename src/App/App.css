@@ -1,25 +1,36 @@
 html,
 body {
+
   height: auto;
   width: auto;
 }
 
 .app {
+  min-height: 100vh;
+  background-color: black;
   display: flex;
-  border: 1px red solid;
 }
 
 .side-scroll {
   width: 30%;
-  border: 1px blue solid;
 }
 
 .main-container {
+  text-align: center;
   width: 70%;
-  border: 1px magenta solid;
+  background-color: #D66D1A;
   margin: 15px;
 }
 
 h1 {
+  height: 40px;
   text-align: center;
+}
+
+.card {
+  width: 30%;
+  border: 2px solid;
+  box-shadow: 15px 15px 25px #D66D1A;
+  background-color: white;
+  margin: 1%;
 }

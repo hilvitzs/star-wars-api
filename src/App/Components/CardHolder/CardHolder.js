@@ -26,7 +26,7 @@ export const CardHolder = ({ cardData, handleClick }) => {
       }
     })
     return(
-      <div>
+      <div className='card-container'>
         {cards}
       </div>
     )

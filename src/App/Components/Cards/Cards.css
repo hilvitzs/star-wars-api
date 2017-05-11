@@ -1,7 +1,0 @@
-.card {
-  display: flex;
-  flex-direction: column;
-  width: 25%;
-  border: 1px green solid;
-  margin: 2%;
-}

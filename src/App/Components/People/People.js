@@ -24,7 +24,6 @@ export default class People extends Component {
         console.log(this.props.personInfo)
         this.setState({
           name: this.props.personInfo.name,
-          species: this.props.personInfo.species,
           homeworld: values.name,
           population: values.population
         })
@@ -46,7 +45,7 @@ export default class People extends Component {
           <p>Name: {this.state.name}</p>
           <p>Homeworld: {this.state.homeworld}</p>
           <p>Species: {this.state.species}</p>
-          <p>Population of Homeworld: {this.state.population}</p>
+          <p>Population: {this.state.population}</p>
         </div>
       )
     }
