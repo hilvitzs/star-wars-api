@@ -1,4 +1,4 @@
-.scroll-text-container {
+/*.scroll-text-container {
   float: left;
 	position: absolute;
 	width: 18em;
@@ -37,4 +37,4 @@
 @keyframes scroll {
 	0% { top: 100%; }
 	100% { top: -170%; }
-}
+}*/
