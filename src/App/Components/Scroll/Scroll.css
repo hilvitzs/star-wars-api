@@ -1,21 +1,21 @@
-/*.scroll-text-container {
-  float: left;
-	position: absolute;
-	width: 18em;
-	height: 50em;
-	bottom: 0;
-	left: 50%;
-	margin-left: -9em;
-	font-size: 350%;
-	font-weight: bold;
-	text-align: justify;
-	overflow: hidden;
-	transform-origin: 50% 100%;
-	transform: perspective(300px) rotateX(25deg);
+.scroll-text-container {
+  position: absolute;
+  width: 27%;
+  height: 101em;
+  bottom: 0;
+  left: 15%;
+  margin-left: -9em;
+  font-size: 180%;
+  font-weight: bold;
+  text-align: justify;
+  overflow: hidden;
+  transform-origin: 50% 100%;
+  transform: perspective(674px) rotateX(25deg);
   background-color: black;
   color: #e5b13a;
   font-family: 'Franklin Gothic Book';
 }
+
 
 .scroll-text-container:after {
 	position: absolute;
@@ -37,4 +37,4 @@
 @keyframes scroll {
 	0% { top: 100%; }
 	100% { top: -170%; }
-}*/
+}

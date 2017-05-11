@@ -1,10 +1,12 @@
 html,
 body {
+
   height: auto;
   width: auto;
 }
 
 .app {
+  min-height: 100vh;
   background-color: black;
   display: flex;
 }
@@ -14,6 +16,7 @@ body {
 }
 
 .main-container {
+  text-align: center;
   width: 70%;
   background-color: #D66D1A;
   margin: 15px;
