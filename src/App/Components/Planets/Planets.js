@@ -33,7 +33,7 @@ export default class Planets extends Component {
   }
 
   onClick (event) {
-    this.props.addFavorite(event);
+    this.props.addFavorite(this.props.planetInfo);
     this.props.countFavorites();
   }
 

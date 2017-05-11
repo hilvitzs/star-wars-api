@@ -1,9 +1,11 @@
 import React from 'react';
 
-export const FavoriteCounter = ({ count }) => {
+export const FavoriteCounter = ({ count, onClick }) => {
   return(
     <div className='favorite'>
-      <p>Favorites Count: {count}</p>
+      <button className='show-favorites'
+              onClick={}
+              >Favorites: {count}</button>
     </div>
   )
 }
