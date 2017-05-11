@@ -3,6 +3,7 @@ import './App.css';
 import { Scroll } from './Components/Scroll/Scroll';
 import { Buttons } from './Components/Buttons/Buttons';
 import { CardHolder } from './Components/CardHolder/CardHolder';
+import { FavoriteCounter } from './Components/FavoriteCounter';
 
 export default class App extends Component {
   constructor() {
@@ -13,7 +14,9 @@ export default class App extends Component {
       vehicles: [],
       planets: [],
       favorites: [],
-      cardData: []
+      cardData: [],
+      counter: 0,
+      name: ''
     }
   }
 
@@ -49,20 +52,32 @@ componentWillMount() {
   })
 }
 
-addFavorite(obj) {
-  this.state.favorites.push(obj)
+addFavorite(e) {
+  this.state.favorites.push(e)
+  this.setState({
+    favorites: this.state.favorites
+  })
+}
+
+countFavorites() {
+  this.setState({
+    counter: this.state.favorites.length
+  })
 }
 
   render() {
     return (
       <div className='app'>
+        <FavoriteCounter count={this.state.counter} />
         <aside className='side-scroll'>
           <Scroll scroll={this.state.scroll}/>
         </aside>
         <section className='main-container'>
           <h1>SWAPI-box</h1>
           <Buttons handleClick={this.handleClick.bind(this)} />
-          <CardHolder cardData={this.state.cardData}/>
+          <CardHolder cardData={this.state.cardData}
+                      addFavorite={this.addFavorite.bind(this)}
+                      countFavorites={this.countFavorites.bind(this)}/>
         </section>
       </div>
     );

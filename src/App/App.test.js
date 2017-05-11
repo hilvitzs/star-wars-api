@@ -10,6 +10,14 @@ describe('App', () => {
     fetchMock.restore();
   });
 
+  function resolveAfter2Seconds() {
+    return new Promise( resolve => {
+      setTimeout() => {
+        resolve();
+      }, 2000);
+    }
+  }
+
   const mockCrawl1 = "It is a period of civil war"
   const mockCrawl2 = "It is a period of civil war"
   const mockCrawl3 = "It is a period of civil war"
@@ -51,16 +59,13 @@ describe('App', () => {
     ]}
 
   it('should render without crashing', () => {
-    const div = document.createElement('div')
-    ReactDOM.render(<App />, div)
-  })
 
-  fetchMock.get('http://swapi.co/api/films/1', {
-      status: 200,
-      body: {
-        "opening_crawl": mockCrawl1,
-      }
-    })
+    fetchMock.get('http://swapi.co/api/films/1', {
+        status: 200,
+        body: {
+          "opening_crawl": mockCrawl1,
+        }
+      })
 
     fetchMock.get('http://swapi.co/api/films/2', {
       status: 200,
@@ -126,10 +131,30 @@ describe('App', () => {
       }
     });
 
+    const div = document.createElement('div')
+    ReactDOM.render(<App />, div)
+  })
+
+
   it('should have scroll', () => {
     const wrapper = mount(<App />)
 
     expect(wrapper.state().scroll).toEqual([])
+  })
+
+  it('should have people data', async () => {
+    fetchMock.get('http://swapi.co/api/people/', {
+      status: 200,
+      body: {
+        mockPeople
+      }
+    });
+
+    const wrapper = mount(<App />)
+
+    await resolveAfter2Seconds()
+
+    expect(wrapper.state().people[0].name).toEqual('Luke Skywalker')
   })
 
 })
