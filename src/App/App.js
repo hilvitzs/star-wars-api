@@ -62,7 +62,7 @@ addFavorite(obj) {
         <section className='main-container'>
           <h1>SWAPI-box</h1>
           <Buttons handleClick={this.handleClick.bind(this)} />
-          <CardHolder />
+          <CardHolder cardData={this.state.cardData}/>
         </section>
       </div>
     );

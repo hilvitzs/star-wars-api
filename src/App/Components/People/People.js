@@ -13,16 +13,18 @@ export default class People extends Component {
   }
 
   componentWillMount() {
-    fetchHomeworld(this.props.personInfo.homeworld)
-    fetchSpecies(this.props.personInfo.species)
+    this.fetchHomeworld(this.props.personInfo.homeworld)
+    this.fetchSpecies(this.props.personInfo.species)
   }
 
     fetchHomeworld(url) {
       fetch(url)
       .then( response => response.json())
       .then( values => {
-        console.log(values)
+        console.log(this.props.personInfo)
         this.setState({
+          name: this.props.personInfo.name,
+          species: this.props.personInfo.species,
           homeworld: values.name,
           population: values.population
         })
@@ -34,7 +36,7 @@ export default class People extends Component {
       .then( response => response.json())
       .then( values => {
         console.log(values)
-        this.setState({ species: values.species})
+        this.setState({ species: values.name})
       })
     }
 

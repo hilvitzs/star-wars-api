@@ -12,32 +12,13 @@ export default class Vehicles extends Component {
     }
   }
 
-  componentDidMount() {
-    fetchData('vehicles')
-  }
-
-  fetchData(arg) {
-    fetch(`http://swapi.co/api/${arg}/`)
-      .then( response => response.json())
-      .then( values =>
-        values.map(vehicle => {
-          this.setState({
-            name: vehicle.name,
-            model: vehicle.model,
-            vehicle_class: vehicle.vehicle_class,
-            passengers: vehicle.passengers
-          })
-        })
-      )
-  }
-
   render() {
     return(
-    <div key={index} className='card'>
-      <p>Name: {this.state.name}</p>
-      <p>Model: {this.state.model}</p>
-      <p>Class: {this.state.vehicle_class}</p>
-      <p>Passengers: {this.state.passengers}</p>
+    <div className='card'>
+      <p>Name: {this.props.vehicleInfo.name}</p>
+      <p>Model: {this.props.vehicleInfo.model}</p>
+      <p>Class: {this.props.vehicleInfo.vehicle_class}</p>
+      <p>Passengers: {this.props.vehicleInfo.passengers}</p>
     </div>
     )
   }
