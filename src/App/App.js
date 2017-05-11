@@ -27,7 +27,6 @@ getTitleScroll() {
 }
 
 handleClick(e) {
-  console.log('fired that shit')
   const buttonName = e.currentTarget.textContent
   this.setState({
     cardData: this.state[buttonName]
@@ -46,6 +45,7 @@ componentWillMount() {
       .then(values =>
         this.setState({ [call]: values.results})
       )
+      .catch(error => 'There was an error fetching data')
   })
 }
 

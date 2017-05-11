@@ -29,7 +29,6 @@ export default class Planets extends Component {
             climate: this.props.planetInfo.climate,
             residents: this.state.residents.concat(resident.name)})
         )
-        console.log(this.state.residents);
     })
   }
 

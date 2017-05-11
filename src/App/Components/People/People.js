@@ -21,7 +21,6 @@ export default class People extends Component {
       fetch(url)
       .then( response => response.json())
       .then( values => {
-        console.log(this.props.personInfo)
         this.setState({
           name: this.props.personInfo.name,
           homeworld: values.name,
@@ -34,7 +33,6 @@ export default class People extends Component {
       fetch(url)
       .then( response => response.json())
       .then( values => {
-        console.log(values)
         this.setState({ species: values.name})
       })
     }
