@@ -37,9 +37,16 @@ export default class People extends Component {
       })
     }
 
+    onClick (event) {
+      this.props.addFavorite(event);
+      this.props.countFavorites();
+    }
+
+
     render() {
       return(
         <div className='card'>
+          <button onClick={(e) => {this.onClick(e)}}>favorite</button>
           <p>Name: {this.state.name}</p>
           <p>Homeworld: {this.state.homeworld}</p>
           <p>Species: {this.state.species}</p>

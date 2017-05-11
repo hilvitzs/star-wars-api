@@ -32,10 +32,16 @@ export default class Planets extends Component {
     })
   }
 
+  onClick (event) {
+    this.props.addFavorite(event);
+    this.props.countFavorites();
+  }
+
 
   render() {
     return(
       <div className='card'>
+        <button onClick={(e) => {this.onClick(event)}}>favorite</button>
         <p>Name: {this.props.planetInfo.name}</p>
         <p>Terrain: {this.props.planetInfo.terrain}</p>
         <p>Population: {this.props.planetInfo.population}</p>
