@@ -9,28 +9,40 @@ export default class Planets extends Component {
       terrain: '',
       population: '',
       climate: '',
-      residents: ''
+      residents: []
     }
   }
 
   componentWillMount() {
-    
+    this.fetchSecondaryData(this.props.planetInfo.residents);
   }
 
-  fetchData(arg) {
-    fetch(`http://swapi.co/api/${arg}/`)
-      .then( response => response.json())
-      .then( values =>
-        this.setState({ [arg]: values.results})
-      )
+  fetchSecondaryData(residents) {
+    residents.forEach( resident => {
+      fetch(resident)
+        .then( response => response.json())
+        .then( resident =>
+          this.setState({
+            name: this.props.planetInfo.name,
+            terrain: this.props.planetInfo.terrain,
+            population: this.props.planetInfo.population,
+            climate: this.props.planetInfo.climate,
+            residents: this.state.residents.concat(resident.name)})
+        )
+        console.log(this.state.residents);
+    })
   }
 
-  fetchSecondaryData(url) {
-    fetch(url)
-      .then( response => response.json())
-      .then( values =>
-        this.setState({ [arg]: values.results})
-      )
-  }
 
+  render() {
+    return(
+      <div className='card'>
+        <p>Name: {this.props.planetInfo.name}</p>
+        <p>Terrain: {this.props.planetInfo.terrain}</p>
+        <p>Population: {this.props.planetInfo.population}</p>
+        <p>Climate: {this.props.planetInfo.climate}</p>
+        <p>Residents: {this.props.planetInfo.residents.length ? this.state.residents.join(', ') : 'None'}</p>
+      </div>
+    )
+  }
 }
