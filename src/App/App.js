@@ -52,8 +52,8 @@ componentWillMount() {
   })
 }
 
-addFavorite(e) {
-  this.state.favorites.push(e)
+addFavorite(obj) {
+  this.state.favorites.push(obj)
   this.setState({
     favorites: this.state.favorites
   })
@@ -63,6 +63,12 @@ countFavorites() {
   this.setState({
     counter: this.state.favorites.length
   })
+}
+
+renderFavorites() {
+  return(
+    
+  )
 }
 
   render() {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Buttons from './Buttons';
+import ReactDOM           from 'react-dom';
+import { Buttons } from './Buttons';
 
 describe('Buttons', () => {
   it('should have three buttons', () => {
