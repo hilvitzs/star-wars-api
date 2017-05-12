@@ -12,8 +12,8 @@ describe('Vehicles', () => {
   const mockVehicles = {
     name: 'Landspeeder',
     model: 'Landspeeder',
-    vehicle_class: 'speeder',
-    passengers: '1'
+    vehicle_class: 'Landspeeder',
+    passengers: '0'
   }
 
   it('should return a vehicle card', () => {
@@ -21,5 +21,4 @@ describe('Vehicles', () => {
 
     expect(wrapper.find('.card')).toHaveLength(1)
   })
-
 })

@@ -6,7 +6,7 @@ import App from './App';
 
 describe('App', () => {
   afterEach(() => {
-    // expect(fetchMock.calls().unmatched).toEqual([]);
+    expect(fetchMock.calls().unmatched).toEqual([]);
     fetchMock.restore();
   });
 
