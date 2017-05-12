@@ -59,6 +59,21 @@ addFavorite(obj) {
   })
 }
 
+removeFavorite(name) {
+  const index = this.state.favorites.findIndex(card => card.name === name);
+  this.state.favorites.splice(index, 1)
+  this.setState({ favorites: this.state.favorites })
+}
+
+toggleFavorite(name) {
+  if (!this.state.favorites.length){
+    this.addFavorite(name)
+  }
+  this.state.favorites.map(card => {
+    return card.name !== name ? this.addFavorite(name) : this.removeFavorite(name);
+  })
+}
+
 countFavorites() {
   this.setState({
     counter: this.state.favorites.length
