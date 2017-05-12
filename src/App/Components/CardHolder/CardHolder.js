@@ -11,6 +11,7 @@ export const CardHolder = ({ cardData, addFavorite, countFavorites }) => {
         return(
           <People personInfo={card}
                   key={index}
+                  id={index}
                   addFavorite={addFavorite}
                   countFavorites={countFavorites}/>
         )
@@ -18,6 +19,7 @@ export const CardHolder = ({ cardData, addFavorite, countFavorites }) => {
         return(
           <Planets planetInfo={card}
                    key={index}
+                   id={index}
                    addFavorite={addFavorite}
                    countFavorites={countFavorites} />
         )
@@ -25,7 +27,8 @@ export const CardHolder = ({ cardData, addFavorite, countFavorites }) => {
         return(
           <Vehicles vehicleInfo={card}
                     key={index}
-                    addFavorite={addFavorite} 
+                    id={index}
+                    addFavorite={addFavorite}
                     countFavorites={countFavorites} />
 
         )

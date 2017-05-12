@@ -10,11 +10,11 @@ describe('App', () => {
     fetchMock.restore();
   });
 
-  function resolveAfter2Seconds() {
+  function resolveAfter1Seconds() {
     return new Promise( resolve => {
       setTimeout(() => {
         resolve();
-      }, 2000);
+      }, 1000);
     });
   }
 
@@ -35,9 +35,7 @@ describe('App', () => {
           "terrain": "grasslands, mountains",
           "population": "2000000000",
           "residents": [
-            "http://swapi.co/api/people/5/",
-            "http://swapi.co/api/people/68/",
-            "http://swapi.co/api/people/81/"
+            "http://swapi.co/api/people/",
           ]
         }]}
 
@@ -145,11 +143,69 @@ describe('App', () => {
     mocks()
 
     const wrapper = mount(<App />)
-    const button = wrapper.find('.btn1')
 
-    await resolveAfter2Seconds()
+    await resolveAfter1Seconds()
 
     expect(wrapper.state().people[0].name).toEqual('Luke Skywalker')
+  })
+
+  it('should have planets data', async () => {
+    mocks()
+
+    const wrapper = mount(<App />)
+
+    await resolveAfter1Seconds()
+
+    expect(wrapper.state().planets[0].name).toEqual("Alderaan")
+  })
+
+  it('should have vehicles data', async () => {
+    mocks()
+
+    const wrapper = mount(<App />)
+
+    await resolveAfter1Seconds()
+
+    expect(wrapper.state().vehicles[0].name).toEqual("TIE/LN starfighter")
+  })
+
+  it('when people button is clicked cardData is populated', async () => {
+    mocks()
+
+    const wrapper = mount(<App />)
+    await resolveAfter1Seconds()
+    const button = wrapper.find('.btn1')
+    button.simulate('click')
+
+    await resolveAfter1Seconds()
+
+    expect(wrapper.state().cardData[0].name).toEqual("Luke Skywalker")
+  })
+
+  it('when planets button is clicked cardData is populated', async () => {
+    mocks()
+
+    const wrapper = mount(<App />)
+    await resolveAfter1Seconds()
+    const button = wrapper.find('.btn3')
+    button.simulate('click')
+
+    await resolveAfter1Seconds()
+
+    expect(wrapper.state().cardData[0].name).toEqual("Alderaan")
+  })
+
+  it('when vehicles button is clicked cardData is populated', async () => {
+    mocks()
+
+    const wrapper = mount(<App />)
+    await resolveAfter1Seconds()
+    const button = wrapper.find('.btn2')
+    button.simulate('click')
+
+    await resolveAfter1Seconds()
+
+    expect(wrapper.state().cardData[0].name).toEqual("TIE/LN starfighter")
   })
 
 })
