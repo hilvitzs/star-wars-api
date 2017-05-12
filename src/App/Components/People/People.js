@@ -38,7 +38,8 @@ export default class People extends Component {
     }
 
     onClick () {
-      this.props.addFavorite(this.props.personInfo);
+      console.log(this.props.personInfo)
+      this.props.toggleFavorite(this.props.personInfo);
       this.props.countFavorites();
     }
 

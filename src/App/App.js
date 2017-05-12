@@ -59,19 +59,25 @@ addFavorite(obj) {
   })
 }
 
-removeFavorite(name) {
-  const index = this.state.favorites.findIndex(card => card.name === name);
+removeFavorite(obj) {
+  const index = this.state.favorites.findIndex(card => card.name === obj);
   this.state.favorites.splice(index, 1)
   this.setState({ favorites: this.state.favorites })
 }
 
-toggleFavorite(name) {
+toggleFavorite(obj) {
   if (!this.state.favorites.length){
-    this.addFavorite(name)
+      this.addFavorite(obj)
+    }
+else if (this.state.favorites.includes(obj)) {
+  this.state.favorites.splice(this.state.favorites.indexOf(obj),1)
+}
+    else{
+    this.state.favorites.map(card => {
+    console.log(card)
+      return card.name !== obj ? this.addFavorite(obj) : this.removeFavorite(obj);
+    })
   }
-  this.state.favorites.map(card => {
-    return card.name !== name ? this.addFavorite(name) : this.removeFavorite(name);
-  })
 }
 
 countFavorites() {
@@ -103,7 +109,7 @@ renderFavorites(favorites) {
           <Buttons handleClick={this.handleClick.bind(this)}
                    count={this.state.counter}/>
           <CardHolder cardData={this.state.cardData}
-                      addFavorite={this.addFavorite.bind(this)}
+                      toggleFavorite={this.toggleFavorite.bind(this)}
                       countFavorites={this.countFavorites.bind(this)}/>
         </section>
       </div>
