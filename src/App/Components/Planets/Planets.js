@@ -32,7 +32,7 @@ export default class Planets extends Component {
     })
   }
 
-  onClick (event) {
+  onClick () {
     this.props.addFavorite(this.props.planetInfo);
     this.props.countFavorites();
   }
@@ -41,7 +41,7 @@ export default class Planets extends Component {
   render() {
     return(
       <div className='card'>
-        <button onClick={(e) => {this.onClick(event)}}>favorite</button>
+        <button onClick={() => {this.onClick()}}>favorite</button>
         <p>Name: {this.props.planetInfo.name}</p>
         <p>Terrain: {this.props.planetInfo.terrain}</p>
         <p>Population: {this.props.planetInfo.population}</p>

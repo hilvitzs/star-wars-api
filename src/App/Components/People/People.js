@@ -37,8 +37,9 @@ export default class People extends Component {
       })
     }
 
-    onClick (event) {
-      this.props.addFavorite(event);
+    onClick () {
+      console.log(this.props.personInfo)
+      this.props.toggleFavorite(this.props.personInfo);
       this.props.countFavorites();
     }
 
@@ -46,7 +47,7 @@ export default class People extends Component {
     render() {
       return(
         <div className='card'>
-          <button onClick={(e) => {this.onClick(e)}}>favorite</button>
+          <button onClick={() => {this.onClick()}}>favorite</button>
           <p>Name: {this.state.name}</p>
           <p>Homeworld: {this.state.homeworld}</p>
           <p>Species: {this.state.species}</p>
